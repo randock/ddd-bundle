@@ -1,0 +1,36 @@
+{
+  "name": "randock/ddd-bundle",
+  "description": "Randock Ddd Bundle",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Randock\\DddBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Randock\\DddBundle\\": "tests/"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "7.2"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "league/tactician-bundle": "^1.1",
+    "league/tactician-doctrine": "^1.1",
+    "randock/ddd": "^0.0.3",
+    "symfony/form": "^4.0",
+    "symfony/symfony": "^4.0",
+    "symfony/translation": "^4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.0",
+    "randock/build": "dev-symfony4"
+  }
+}
