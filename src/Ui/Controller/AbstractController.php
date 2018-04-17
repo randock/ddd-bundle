@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Randock\DddExample\Ui\Web\Shared\Controller;
+namespace Randock\DddBundle\Ui\Controller;
 
 use League\Tactician\CommandBus;
 use Symfony\Component\Form\FormError;

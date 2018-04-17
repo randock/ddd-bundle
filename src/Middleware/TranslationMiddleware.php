@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Randock\DddExample\Infrastructure\Shared\Middleware;
+namespace Randock\DddBundle\Middleware;
 
 use League\Tactician\Middleware;
 use Symfony\Component\Translation\TranslatorInterface;
