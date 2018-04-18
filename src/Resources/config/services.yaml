@@ -1,3 +1,5 @@
 services:
     Randock\DddBundle\Middleware\TranslationMiddleware:
         class: Randock\DddBundle\Middleware\TranslationMiddleware
+        arguments:
+          - '@translator'
