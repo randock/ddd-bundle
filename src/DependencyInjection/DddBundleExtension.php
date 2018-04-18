@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 /**
  * Class RandockInfrastructureCategoryExtension.
  */
-class dddBundleExtension extends Extension
+class DddBundleExtension extends Extension
 {
     /**
      * {@inheritdoc}
