@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Randock\Infrastructure\CategoryBundle\DependencyInjection;
+namespace Randock\DddBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
