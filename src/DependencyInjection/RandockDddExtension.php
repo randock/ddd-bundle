@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 
 /**
- * Class RandockInfrastructureCategoryExtension.
+ * Class RandockDddExtension.
  */
 class RandockDddExtension extends Extension
 {
