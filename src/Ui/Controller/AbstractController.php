@@ -30,7 +30,7 @@ class AbstractController extends Controller
     /**
      * @return CommandBus
      */
-    public function getCommandBus(): CommandBus
+    protected function getCommandBus(): CommandBus
     {
         return $this->commandBus;
     }
