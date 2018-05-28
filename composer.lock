@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c23e0a738ace5800ea9314e0d0d7f1e6",
+    "content-hash": "548c95b536163b4cecc79ac7c5dbeb57",
     "packages": [
         {
             "name": "bornfreee/tactician-domain-events",
@@ -1003,16 +1003,16 @@
         },
         {
             "name": "randock/ddd",
-            "version": "0.0.3",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/randock/ddd.git",
-                "reference": "1bf0e38c19c99fb1b39df8abb63622136dcddad9"
+                "reference": "fa00ce63ee1a3d734e19b0c42c93da3d41e38376"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/randock/ddd/zipball/1bf0e38c19c99fb1b39df8abb63622136dcddad9",
-                "reference": "1bf0e38c19c99fb1b39df8abb63622136dcddad9",
+                "url": "https://api.github.com/repos/randock/ddd/zipball/fa00ce63ee1a3d734e19b0c42c93da3d41e38376",
+                "reference": "fa00ce63ee1a3d734e19b0c42c93da3d41e38376",
                 "shasum": ""
             },
             "require": {
@@ -1020,8 +1020,8 @@
                 "symfony/validator": "^4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.0",
-                "randock/build": "dev-symfony4"
+                "randock/build": "dev-symfony4",
+                "symfony/phpunit-bridge": "^4.0"
             },
             "type": "library",
             "autoload": {
@@ -1034,7 +1034,7 @@
                 "MIT"
             ],
             "description": "Randock Ddd",
-            "time": "2018-04-17T12:22:59+00:00"
+            "time": "2018-05-24T10:36:09+00:00"
         },
         {
             "name": "symfony/cache",
