@@ -38,15 +38,28 @@ class TranslationMiddleware implements Middleware
         try {
             return $next($command);
         } catch (ValidationException $exception) {
-            foreach ($exception->getErrors() as $error) {
-                $error->setMessage(
-                    $this->translator->trans(
-                        $error->getMessage()
-                    )
-                );
-            }
+            $errors = $this->translate($exception->getErrors());
+            $exception->setErrors($errors);
 
             throw $exception;
         }
+    }
+
+    /**
+     * @param array $errors
+     *
+     * @return array
+     */
+    private function translate(array $errors): array
+    {
+        foreach ($errors as $field => $error) {
+            if (is_array($error)) {
+                $errors[$field] = $this->translate($error);
+            } else {
+                $errors[$field] = $this->translator->trans($error);
+            }
+        }
+
+        return $errors;
     }
 }
