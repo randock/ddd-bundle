@@ -36,11 +36,19 @@ trait HandleFormTrait
                 }
             } catch (ValidationException $exception) {
                 foreach ($exception->getErrors() as $field => $error) {
-                    $form->get($field)->addError(
-                        new FormError(
-                            $error
-                        )
-                    );
+                    if ($form->offsetExists($field)) {
+                        $form->get($field)->addError(
+                            new FormError(
+                                $error
+                            )
+                        );
+                    } else {
+                        $form->addError(
+                            new FormError(
+                                $error
+                            )
+                        );
+                    }
                 }
 
                 // errors
