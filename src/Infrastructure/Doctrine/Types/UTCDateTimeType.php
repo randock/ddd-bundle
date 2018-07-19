@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Randock\DddBundle\Infrastructure\Doctrine\Types;
 
-
 use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
