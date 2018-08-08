@@ -27,34 +27,47 @@ trait HandleFormTrait
 
         // check if it's valid
         if ($form->isSubmitted() && $form->isValid()) {
-            $orderCommand = $form->getData();
+            $command = $form->getData();
 
             try {
-                $result = $this->getCommandBus()->handle($orderCommand);
+                $result = $this->getCommandBus()->handle($command);
                 if (null !== $successClosure) {
                     $successClosure->call($this, $result);
                 }
             } catch (ValidationException $exception) {
-                foreach ($exception->getErrors() as $field => $error) {
-                    if ($form->offsetExists($field)) {
-                        $form->get($field)->addError(
-                            new FormError(
-                                $error
-                            )
-                        );
-                    } else {
-                        $form->addError(
-                            new FormError(
-                                $error
-                            )
-                        );
-                    }
-                }
+                $this->addFormErrors($form, $exception->getErrors());
 
                 // errors
                 if (null !== $errorClosure) {
                     $errorClosure->call($this, $exception);
                 }
+            }
+        }
+    }
+
+    /**
+     * @param FormInterface $form
+     * @param array         $errors
+     */
+    private function addFormErrors(FormInterface $form, array $errors)
+    {
+        foreach ($errors as $field => $error) {
+            if (!is_array($error)) {
+                if ($form->offsetExists($field)) {
+                    $form->get($field)->addError(
+                        new FormError(
+                            $error
+                        )
+                    );
+                } else {
+                    $form->addError(
+                        new FormError(
+                            $error
+                        )
+                    );
+                }
+            } else {
+                $this->addFormErrors($form->get($field), $error);
             }
         }
     }
