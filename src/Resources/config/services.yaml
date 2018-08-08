@@ -3,3 +3,4 @@ services:
         class: Randock\DddBundle\Middleware\TranslationMiddleware
         arguments:
           - '@translator'
+          - 'messages'

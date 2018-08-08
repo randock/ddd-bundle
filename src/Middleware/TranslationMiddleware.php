@@ -16,13 +16,20 @@ class TranslationMiddleware implements Middleware
     private $translator;
 
     /**
+     * @var string
+     */
+    private $domain;
+
+    /**
      * TranslationMiddleware constructor.
      *
      * @param TranslatorInterface $translator
+     * @param string              $domain
      */
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator, string $domain)
     {
         $this->translator = $translator;
+        $this->domain = $domain;
     }
 
     /**
@@ -56,7 +63,7 @@ class TranslationMiddleware implements Middleware
             if (is_array($error)) {
                 $errors[$field] = $this->translate($error);
             } else {
-                $errors[$field] = $this->translator->trans($error);
+                $errors[$field] = $this->translator->trans($error, [], $this->domain);
             }
         }
 
