@@ -29,7 +29,12 @@ class UTCDateTimeType extends DateTimeType
         if (!$value instanceof \DateTimeImmutable) {
             return null;
         }
-        $value->setTimezone((self::$utc) ? self::$utc : (self::$utc = new \DateTimeZone('UTC')));
+
+        if(null === self::$utc){
+            self::$utc = new \DateTimeZone('UTC');
+        }
+
+        $value->setTimezone(self::$utc);
 
         return $value->format($platform->getDateTimeFormatString());
     }
@@ -44,10 +49,15 @@ class UTCDateTimeType extends DateTimeType
         if (null === $value) {
             return null;
         }
+
+        if(null === self::$utc){
+            self::$utc = new \DateTimeZone('UTC');
+        }
+
         $val = \DateTimeImmutable::createFromFormat(
             $platform->getDateTimeFormatString(),
             $value,
-            (self::$utc) ? self::$utc : (self::$utc = new \DateTimeZone('UTC'))
+            self::$utc
         );
         if (!$val) {
             throw ConversionException::conversionFailed($value, $this->getName());
