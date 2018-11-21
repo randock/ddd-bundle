@@ -64,7 +64,7 @@ class TranslationMiddlewareTest extends TestCase
         } catch (ValidationException $exception) {
             foreach ($exception->getErrors() as $field => $error) {
                 $this->assertSame('name', $field);
-                $this->assertSame(gettype([]), gettype($error));
+                $this->assertSame(\gettype([]), \gettype($error));
                 foreach ($error as $fieldChild => $errorChild) {
                     $this->assertSame('file', $fieldChild);
                     $this->assertSame('Key', $errorChild);

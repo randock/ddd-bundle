@@ -52,7 +52,7 @@ trait HandleFormTrait
     private function addFormErrors(FormInterface $form, array $errors)
     {
         foreach ($errors as $field => $error) {
-            if (!is_array($error)) {
+            if (!\is_array($error)) {
                 if ($form->offsetExists($field)) {
                     $form->get($field)->addError(
                         new FormError(
