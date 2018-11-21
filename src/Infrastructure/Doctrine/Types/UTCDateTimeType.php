@@ -30,7 +30,7 @@ class UTCDateTimeType extends DateTimeType
             return null;
         }
 
-        if(null === self::$utc){
+        if (null === self::$utc) {
             self::$utc = new \DateTimeZone('UTC');
         }
 
@@ -50,7 +50,7 @@ class UTCDateTimeType extends DateTimeType
             return null;
         }
 
-        if(null === self::$utc){
+        if (null === self::$utc) {
             self::$utc = new \DateTimeZone('UTC');
         }
 
