@@ -21,6 +21,11 @@ class UTCDateTimeType extends DateTimeType
         if (null === $value) {
             return null;
         }
+        
+        if ($value instanceof \DateTime) {
+            $value = \DateTimeImmutable::createFromMutable($value);
+        }
+
         if (!$value instanceof \DateTimeImmutable) {
             return null;
         }
