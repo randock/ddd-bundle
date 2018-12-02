@@ -3,3 +3,4 @@ vendor
 docker-compose.yml
 phpunit.xml
 /build/
+.Ds_store
