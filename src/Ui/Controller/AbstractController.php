@@ -6,9 +6,9 @@ namespace Randock\DddBundle\Ui\Controller;
 
 use League\Tactician\CommandBus;
 use Randock\DddBundle\Ui\Traits\HandleFormTrait;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as SymfonyAbstractController;
 
-class AbstractController extends Controller
+class AbstractController extends SymfonyAbstractController
 {
     use HandleFormTrait;
 
