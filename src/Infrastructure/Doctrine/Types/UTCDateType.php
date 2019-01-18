@@ -10,31 +10,31 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 class UTCDateType extends DateType
 {
-	/** @var \DateTimeZone */
-	private static $utc = null;
+    /** @var \DateTimeZone */
+    private static $utc = null;
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function convertToDatabaseValue($value, AbstractPlatform $platform)
-	{
-		if (null === $value) {
-			return null;
-		}
+    /**
+     * {@inheritdoc}
+     */
+    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    {
+        if (null === $value) {
+            return null;
+        }
 
-		if ($value instanceof \DateTime) {
-			$value = \DateTimeImmutable::createFromMutable($value);
-		}
+        if ($value instanceof \DateTime) {
+            $value = \DateTimeImmutable::createFromMutable($value);
+        }
 
-		if (!$value instanceof \DateTimeImmutable) {
-			return null;
-		}
+        if (!$value instanceof \DateTimeImmutable) {
+            return null;
+        }
 
-		if (null === self::$utc) {
-			self::$utc = new \DateTimeZone('UTC');
-		}
+        if (null === self::$utc) {
+            self::$utc = new \DateTimeZone('UTC');
+        }
 
-		$value->setTimezone(self::$utc);
+        $value->setTimezone(self::$utc);
 
 		$value->setTime(
 			0,
@@ -42,32 +42,32 @@ class UTCDateType extends DateType
 			0
 		);
 
-		return $value->format($platform->getDateFormatString());
-	}
+        return $value->format($platform->getDateFormatString());
+    }
 
-	/**
-	 * {@inheritdoc}
-	 *
-	 * @throws ConversionException
-	 */
-	public function convertToPHPValue($value, AbstractPlatform $platform)
-	{
-		if (null === $value) {
-			return null;
-		}
+    /**
+     * {@inheritdoc}
+     *
+     * @throws ConversionException
+     */
+    public function convertToPHPValue($value, AbstractPlatform $platform)
+    {
+        if (null === $value) {
+            return null;
+        }
 
-		if (null === self::$utc) {
-			self::$utc = new \DateTimeZone('UTC');
-		}
+        if (null === self::$utc) {
+            self::$utc = new \DateTimeZone('UTC');
+        }
 
-		$val = \DateTimeImmutable::createFromFormat(
-			$platform->getDateFormatString(),
-			$value,
-			self::$utc
-		);
-		if (!$val) {
-			throw ConversionException::conversionFailed($value, $this->getName());
-		}
+        $val = \DateTimeImmutable::createFromFormat(
+            $platform->getDateFormatString(),
+            $value,
+            self::$utc
+        );
+        if (!$val) {
+            throw ConversionException::conversionFailed($value, $this->getName());
+        }
 
 		$val->setTime(
 			0,
@@ -75,6 +75,6 @@ class UTCDateType extends DateType
 			0
 		);
 
-		return $val;
-	}
+        return $val;
+    }
 }
