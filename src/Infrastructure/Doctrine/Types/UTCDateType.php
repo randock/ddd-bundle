@@ -36,11 +36,11 @@ class UTCDateType extends DateType
 
         $value->setTimezone(self::$utc);
 
-		$value->setTime(
-			0,
-			0,
-			0
-		);
+        $value->setTime(
+            0,
+            0,
+            0
+        );
 
         return $value->format($platform->getDateFormatString());
     }
@@ -69,11 +69,11 @@ class UTCDateType extends DateType
             throw ConversionException::conversionFailed($value, $this->getName());
         }
 
-		$val->setTime(
-			0,
-			0,
-			0
-		);
+        $val->setTime(
+            0,
+            0,
+            0
+        );
 
         return $val;
     }
