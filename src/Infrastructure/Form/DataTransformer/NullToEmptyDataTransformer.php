@@ -14,9 +14,9 @@ class NullToEmptyDataTransformer implements DataTransformerInterface
     /**
      * Does not transform anything.
      *
-     * @param null|string $value
+     * @param string|null $value
      *
-     * @return null|string
+     * @return string|null
      */
     public function transform($value): ?string
     {
@@ -26,7 +26,7 @@ class NullToEmptyDataTransformer implements DataTransformerInterface
     /**
      * Transforms a null to an empty string.
      *
-     * @param null|string $value
+     * @param string|null $value
      *
      * @return string
      */
