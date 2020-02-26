@@ -21,5 +21,12 @@ class RandockDddExtension extends Extension
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        if (null !== $config['command_cache_service']) {
+            $container->setAlias('randock_ddd.command_cache_service', $config['command_cache_service']);
+        }
     }
 }
