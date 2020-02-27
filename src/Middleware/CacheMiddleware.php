@@ -7,6 +7,7 @@ namespace Randock\DddBundle\Middleware;
 use League\Tactician\Middleware;
 use Psr\SimpleCache\CacheInterface;
 use Randock\DddBundle\Middleware\Definition\CacheableInterface;
+use Symfony\Component\Cache\Exception\InvalidArgumentException;
 
 class CacheMiddleware implements Middleware
 {
@@ -16,16 +17,16 @@ class CacheMiddleware implements Middleware
     public const CACHE_PREFIX = 'commandBus_cache_';
 
     /**
-     * @var CacheInterface
+     * @var CacheInterface|null
      */
     private $cache;
 
     /**
      * CacheMiddleware constructor.
      *
-     * @param CacheInterface $cache
+     * @param CacheInterface|null $cache
      */
-    public function __construct(CacheInterface $cache)
+    public function __construct(?CacheInterface $cache = null)
     {
         $this->cache = $cache;
     }
@@ -34,14 +35,13 @@ class CacheMiddleware implements Middleware
      * @param object   $command
      * @param callable $next
      *
-     * @throws \Psr\Cache\InvalidArgumentException
+     * @throws InvalidArgumentException
      *
      * @return mixed
      */
     public function execute($command, callable $next)
     {
-        if ($command instanceof CacheableInterface) {
-            // check if it's cached
+        if ($command instanceof CacheableInterface && $this->cache instanceof CacheInterface) {
             $cacheKey = sprintf(
                 '%s%s',
                 self::CACHE_PREFIX,

@@ -5,3 +5,6 @@ parameters:
     excludes_analyse:
         - %currentWorkingDirectory%/vendor
         - %currentWorkingDirectory%/etc
+    ignoreErrors:
+        - '#no value type specified in iterable#'
+        - '#Call to method DateTimeImmutable::setTime(zone)?\(\) on a separate line has no effect#'

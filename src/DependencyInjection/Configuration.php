@@ -21,8 +21,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('command_cache_service')
                 ->defaultValue('cache.app.simple')
-               ->end()
-            ->end()
+             ->end()
         ;
 
         return $treeBuilder;

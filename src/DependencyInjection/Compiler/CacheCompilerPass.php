@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Randock\DddBundle\DependencyInjection\Compiler;
 
 use Psr\SimpleCache\CacheInterface;
+use Randock\DddBundle\Middleware\CacheMiddleware;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use Randock\DddBundle\DependencyInjection\Exception\InvalidCacheServiceException;
 
 class CacheCompilerPass implements CompilerPassInterface
 {
@@ -36,8 +38,8 @@ class CacheCompilerPass implements CompilerPassInterface
                 throw new InvalidCacheServiceException(\sprintf("The service '%s' does not exists", $exception->getId()));
             }
         } else {
-            $cacheDefinition = $container->findDefinition(OrderSchemaFactory::class);
-            $cacheDefinition->replaceArgument(3, null);
+            $cacheDefinition = $container->findDefinition(CacheMiddleware::class);
+            $cacheDefinition->replaceArgument(0, null);
         }
     }
 }
