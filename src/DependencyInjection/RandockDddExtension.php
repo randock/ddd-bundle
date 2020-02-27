@@ -15,11 +15,21 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 class RandockDddExtension extends Extension
 {
     /**
-     * {@inheritdoc}
+     * @param array            $configs
+     * @param ContainerBuilder $container
+     *
+     * @throws \Exception
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        if (null !== $config['command_cache_service']) {
+            $container->setAlias('randock_ddd.command_cache_service', $config['command_cache_service']);
+        }
     }
 }

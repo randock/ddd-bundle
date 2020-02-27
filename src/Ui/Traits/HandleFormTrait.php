@@ -22,7 +22,7 @@ trait HandleFormTrait
         FormInterface $form,
         \Closure $successClosure = null,
         \Closure $errorClosure = null
-    ) {
+    ): void {
         $form->handleRequest($request);
 
         // check if it's valid
@@ -49,7 +49,7 @@ trait HandleFormTrait
      * @param FormInterface $form
      * @param array         $errors
      */
-    private function addFormErrors(FormInterface $form, array $errors)
+    private function addFormErrors(FormInterface $form, array $errors): void
     {
         foreach ($errors as $field => $error) {
             if (!\is_array($error)) {
