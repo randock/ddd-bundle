@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Randock\DddBundle\Infrastructure\Doctrine\Types;
 
-use Doctrine\DBAL\Types\DateType;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\DateTimeImmutableType;
 
-class UTCDateType extends DateType
+class UTCDateTimeImmutableType extends DateTimeImmutableType
 {
     /** @var \DateTimeZone */
     private static $utc = null;
@@ -36,13 +36,7 @@ class UTCDateType extends DateType
 
         $value->setTimezone(self::$utc);
 
-        $value->setTime(
-            0,
-            0,
-            0
-        );
-
-        return $value->format($platform->getDateFormatString());
+        return $value->format($platform->getDateTimeFormatString());
     }
 
     /**
@@ -61,19 +55,13 @@ class UTCDateType extends DateType
         }
 
         $val = \DateTimeImmutable::createFromFormat(
-            $platform->getDateFormatString(),
+            $platform->getDateTimeFormatString(),
             $value,
             self::$utc
         );
         if (!$val) {
             throw ConversionException::conversionFailed($value, $this->getName());
         }
-
-        $val->setTime(
-            0,
-            0,
-            0
-        );
 
         return $val;
     }

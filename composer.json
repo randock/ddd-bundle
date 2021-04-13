@@ -24,6 +24,7 @@
   "require": {
     "league/tactician-bundle": "^1.1",
     "league/tactician-doctrine": "^1.1",
+    "psr/simple-cache": "1.0",
     "randock/ddd": "*",
     "symfony/form": "^4.0|^5.0",
     "symfony/framework-bundle": "^4.0|^5.0",

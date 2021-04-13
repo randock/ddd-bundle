@@ -4,3 +4,8 @@ services:
         arguments:
           - '@translator'
           - 'messages'
+
+    Randock\DddBundle\Middleware\CacheMiddleware:
+        class: Randock\DddBundle\Middleware\CacheMiddleware
+        arguments:
+          - '@randock_ddd.command_cache_service'

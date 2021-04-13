@@ -6,6 +6,5 @@ parameters:
         - %currentWorkingDirectory%/vendor
         - %currentWorkingDirectory%/etc
     ignoreErrors:
-        - '/.* no value type specified in iterable type array/'
-        - '#Call to method DateTimeImmutable::setTimezone\(\) on a separate line has no effect.#'
-        - '/.* has parameter \$form with no value type specified in iterable type Symfony\\Component\\Form\\FormInterface./'
+        - '#no value type specified in iterable#'
+        - '#Call to method DateTimeImmutable::setTime(zone)?\(\) on a separate line has no effect#'

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Randock\DddBundle\Infrastructure\Doctrine\Types;
 
-use Doctrine\DBAL\Types\DateType;
+use Doctrine\DBAL\Types\DateImmutableType;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
-class UTCDateType extends DateType
+class UTCDateImmutableType extends DateImmutableType
 {
     /** @var \DateTimeZone */
     private static $utc = null;
