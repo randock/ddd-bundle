@@ -20,7 +20,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('command_cache_service')
-                ->defaultValue('cache.app.simple')
+                ->defaultValue('cache.app')
              ->end()
         ;
 
