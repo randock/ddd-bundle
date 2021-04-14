@@ -8,3 +8,4 @@ parameters:
     ignoreErrors:
         - '#no value type specified in iterable#'
         - '#Call to method DateTimeImmutable::setTime(zone)?\(\) on a separate line has no effect#'
+        - '#PHPDoc tag @throws with type Psr\\Cache\\InvalidArgumentException is not subtype of Throwable#'

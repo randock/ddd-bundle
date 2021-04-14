@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Randock\DddBundle\Middleware;
 
 use League\Tactician\Middleware;
-use Psr\SimpleCache\CacheInterface;
+use Psr\Cache\InvalidArgumentException;
+use Symfony\Contracts\Cache\ItemInterface;
+use Symfony\Contracts\Cache\CacheInterface;
 use Randock\DddBundle\Middleware\Definition\CacheableInterface;
-use Symfony\Component\Cache\Exception\InvalidArgumentException;
 
 class CacheMiddleware implements Middleware
 {
@@ -48,14 +49,11 @@ class CacheMiddleware implements Middleware
                 $command->getCacheKey()
             );
 
-            if ($this->cache->has($cacheKey)) {
-                return $this->cache->get($cacheKey);
-            }
+            return $this->cache->get($cacheKey, function (ItemInterface $item) use ($next, $command) {
+                $item->expiresAfter($command->getCacheTtl());
 
-            $result = $next($command);
-            $this->cache->set($cacheKey, $result, $command->getCacheTtl());
-
-            return $result;
+                return $next($command);
+            });
         }
 
         return $next($command);
