@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Randock\DddBundle\DependencyInjection\Compiler;
 
-use Psr\SimpleCache\CacheInterface;
+use Symfony\Contracts\Cache\CacheInterface;
 use Randock\DddBundle\Middleware\CacheMiddleware;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
