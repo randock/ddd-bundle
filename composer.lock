@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff4e67982a2211b902143b38b0fef530",
+    "content-hash": "18e8233df5b4e7057e6b82ff3e12b61d",
     "packages": [
         {
             "name": "bornfreee/tactician-domain-events",
@@ -837,20 +837,6 @@
             "support": {
                 "source": "https://github.com/symfony/cache/tree/v4.4.21"
             },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2021-03-14T19:28:18+00:00"
         },
         {
@@ -3181,6 +3167,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2"
-    },
-    "plugin-api-version": "2.0.0"
+    }
 }

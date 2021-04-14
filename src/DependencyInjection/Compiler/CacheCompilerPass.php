@@ -6,6 +6,7 @@ namespace Randock\DddBundle\DependencyInjection\Compiler;
 
 use Psr\SimpleCache\CacheInterface;
 use Randock\DddBundle\Middleware\CacheMiddleware;
+use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
@@ -21,14 +22,16 @@ class CacheCompilerPass implements CompilerPassInterface
      *
      * @return void
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if ($container->hasAlias('randock_ddd.command_cache_service')) {
             try {
+                /** @var ChildDefinition $cacheDefinition */
                 $cacheDefinition = $container->findDefinition('randock_ddd.command_cache_service');
+                $parentDefinition = $container->findDefinition($cacheDefinition->getParent());
 
                 /** @var class-string $cacheClass */
-                $cacheClass = $cacheDefinition->getClass();
+                $cacheClass = $parentDefinition->getClass();
 
                 $reflectionClass = new \ReflectionClass($cacheClass);
                 if (!$reflectionClass->implementsInterface(CacheInterface::class)) {
