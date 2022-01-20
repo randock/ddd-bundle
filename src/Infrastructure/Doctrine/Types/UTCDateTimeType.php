@@ -50,6 +50,10 @@ class UTCDateTimeType extends DateTimeType
             return null;
         }
 
+        if ($value instanceof \DateTimeInterface) {
+            return $value;
+        }
+
         if (null === self::$utc) {
             self::$utc = new \DateTimeZone('UTC');
         }
