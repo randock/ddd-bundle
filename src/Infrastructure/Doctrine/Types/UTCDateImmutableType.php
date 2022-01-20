@@ -56,6 +56,10 @@ class UTCDateImmutableType extends DateImmutableType
             return null;
         }
 
+        if ($value instanceof \DateTimeInterface) {
+            return $value;
+        }
+
         if (null === self::$utc) {
             self::$utc = new \DateTimeZone('UTC');
         }
