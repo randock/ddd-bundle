@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Randock\DddBundle\Middleware;
 
 use League\Tactician\Middleware;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Randock\Ddd\Validation\Exception\ValidationException;
 
 class TranslationMiddleware implements Middleware
